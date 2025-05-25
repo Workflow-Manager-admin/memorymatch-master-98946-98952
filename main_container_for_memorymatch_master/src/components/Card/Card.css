@@ -70,18 +70,27 @@
 }
 
 .card-back-symbol {
-  font-size: 2.5rem;
+  font-size: 3rem; /* Slightly larger for a paw print */
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif; /* Child-friendly font */
   color: white;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   position: relative;
   z-index: 2;
-  animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite, spin-นิดหน่อย 10s linear infinite; /* Added a slight spin */
 }
 
+@keyframes spin-นิดหน่อย { /* "nidnoi" means a little bit in Thai */
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
 .card-front {
-  background-color: white;
+  background-color: #f0f8ff; /* AliceBlue, a light, friendly color */
   color: var(--dark);
   transform: rotateY(180deg);
   border: 2px solid rgba(99, 102, 241, 0.3);
