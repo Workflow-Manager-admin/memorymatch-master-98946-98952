@@ -22,3 +22,46 @@ src/components/MemoryGame/MemoryGame.js
 
 webpack compiled with 1 warning
 Compiling...
+Failed to compile.
+
+[eslint] 
+src/utils/gameUtils.js
+  Line 28:18:  'emojiSet' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/MemoryGame/MemoryGame.js
+  Line 46:6:  React Hook useEffect has a missing dependency: 'createConfetti'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/utils/gameUtils.js
+  Line 1:10:  'getAnimalSet' is defined but never used  no-unused-vars
+
+ERROR in [eslint] 
+src/utils/gameUtils.js
+  Line 28:18:  'emojiSet' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/utils/gameUtils.js
+  Line 28:18:  'emojiSet' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+WARNING in [eslint] 
+src/components/MemoryGame/MemoryGame.js
+  Line 46:6:  React Hook useEffect has a missing dependency: 'createConfetti'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src/utils/gameUtils.js
+  Line 1:10:  'getAnimalSet' is defined but never used  no-unused-vars
+
+ERROR in [eslint] 
+src/utils/gameUtils.js
+  Line 28:18:  'emojiSet' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error and 1 warning

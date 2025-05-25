@@ -21,26 +21,27 @@ export const shuffleArray = (array) => {
 /**
  * Generate card data for the game with pairs of matching cards
  * @param {number} pairsCount - Number of pairs to generate (default 8)
- * @returns {Array} - Array of card objects with id, value, and status
+ * @returns {Array} - Array of card objects with id, animal data, and status
  */
 export const generateCardData = (pairsCount = 8) => {
-  // Use a subset of emojis if pairsCount is less than emojiSet length
-  const emojis = emojiSet.slice(0, pairsCount);
+  const selectedAnimals = getAnimalSet(pairsCount);
   
   // Create pairs of cards
   let cards = [];
-  emojis.forEach((emoji, index) => {
-    // Create two cards with the same emoji (a matching pair)
+  selectedAnimals.forEach((animal, index) => {
+    // Create two cards with the same animal (a matching pair)
     cards.push(
       {
-        id: `card-${index}-1`,
-        value: emoji,
+        id: `card-${animal.name.toLowerCase()}-${index}-1`, // Ensure unique ID
+        animal: animal, // Store the whole animal object
+        value: animal.name, // The 'value' for matching logic will be the animal's name
         isFlipped: false,
         isMatched: false
       },
       {
-        id: `card-${index}-2`,
-        value: emoji,
+        id: `card-${animal.name.toLowerCase()}-${index}-2`, // Ensure unique ID
+        animal: animal, // Store the whole animal object
+        value: animal.name, // The 'value' for matching logic will be the animal's name
         isFlipped: false,
         isMatched: false
       }
