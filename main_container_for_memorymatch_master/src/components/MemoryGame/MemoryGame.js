@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import GameBoard from '../GameBoard/GameBoard';
 import ScoreBoard from '../ScoreBoard/ScoreBoard';
 import { generateCardData, checkForMatch, calculateScore } from '../../utils/gameUtils';
@@ -22,6 +22,7 @@ const MemoryGame = () => {
   const [score, setScore] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [confetti, setConfetti] = useState([]);
 
   // Initialize game
   useEffect(() => {
@@ -32,7 +33,10 @@ const MemoryGame = () => {
   useEffect(() => {
     if (matches === pairsCount && cards.length > 0) {
       // Game over!
-      setGameOver(true);
+      setTimeout(() => {
+        setGameOver(true);
+        createConfetti();
+      }, 800);
     }
   }, [matches, pairsCount, cards.length]);
 
@@ -40,6 +44,33 @@ const MemoryGame = () => {
   useEffect(() => {
     setScore(calculateScore(matches, moves, pairsCount));
   }, [matches, moves, pairsCount]);
+
+  /**
+   * Generate confetti elements for celebration
+   */
+  const createConfetti = useCallback(() => {
+    // Create confetti pieces with random positions, colors and delays
+    const colors = [
+      'var(--primary)', 
+      'var(--primary-light)', 
+      'var(--secondary)', 
+      'var(--secondary-light)',
+      '#22C55E',
+      '#F59E0B'
+    ];
+    
+    const pieces = Array.from({ length: 100 }, (_, i) => ({
+      id: i,
+      x: Math.random() * window.innerWidth,
+      y: -20 - Math.random() * 100,
+      rotation: Math.random() * 360,
+      size: Math.random() * 8 + 6,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      delay: Math.random() * 2
+    }));
+    
+    setConfetti(pieces);
+  }, []);
 
   /**
    * Start a new game
@@ -52,6 +83,7 @@ const MemoryGame = () => {
     setScore(0);
     setIsLocked(false);
     setGameOver(false);
+    setConfetti([]);
   };
 
   /**
@@ -114,9 +146,27 @@ const MemoryGame = () => {
     }
   };
 
+  // Calculate perfect moves (the minimum possible)
+  const perfectMoves = pairsCount * 2;
+  
+  // Determine performance message
+  let performanceMessage = "Great job completing the game!";
+  if (moves <= perfectMoves) {
+    performanceMessage = "Wow! Perfect memory! You couldn't have done better!";
+  } else if (moves <= perfectMoves * 1.5) {
+    performanceMessage = "Excellent memory skills! That was impressive!";
+  } else if (moves <= perfectMoves * 2) {
+    performanceMessage = "Great performance! Your memory is quite strong!";
+  }
+
   return (
-    <div className="memory-game">
-      <h1 className="game-title">MemoryMatch Master</h1>
+    <div className="memory-game-container">
+      <div className="game-header">
+        <h1 className="game-title">MemoryMatch Master</h1>
+        <p className="game-subtitle">
+          Find matching pairs of cards to test your memory skills. The fewer moves, the higher your score!
+        </p>
+      </div>
       
       <ScoreBoard
         score={score}
@@ -126,16 +176,64 @@ const MemoryGame = () => {
         onRestart={startNewGame}
       />
       
-      <GameBoard 
-        cards={cards}
-        onCardClick={handleCardClick}
-      />
+      <div className="game-wrapper">
+        <GameBoard 
+          cards={cards}
+          onCardClick={handleCardClick}
+        />
+      </div>
       
       {gameOver && (
-        <div className="game-over">
-          <h2>Congratulations!</h2>
-          <p>You completed the game in {moves} moves with a score of {score}!</p>
-          <button className="btn" onClick={startNewGame}>Play Again</button>
+        <div className="game-over-modal" role="dialog" aria-labelledby="game-over-title">
+          <div className="celebration-icon">🏆</div>
+          
+          {confetti.map(piece => (
+            <div 
+              key={piece.id}
+              className="confetti"
+              style={{
+                left: `${piece.x}px`,
+                top: `${piece.y}px`,
+                width: `${piece.size}px`,
+                height: `${piece.size}px`,
+                backgroundColor: piece.color,
+                transform: `rotate(${piece.rotation}deg)`,
+                animation: `confetti-fall ${2 + Math.random()}s linear ${piece.delay}s forwards`
+              }}
+            />
+          ))}
+          
+          <div className="game-over-content">
+            <h2 id="game-over-title" className="game-over-title">Congratulations!</h2>
+            
+            <div className="game-over-stats">
+              <div className="game-over-stat">
+                <div className="stat-circle">
+                  <span className="stat-number">{score}</span>
+                </div>
+                <span className="stat-caption">Score</span>
+              </div>
+              
+              <div className="game-over-stat">
+                <div className="stat-circle">
+                  <span className="stat-number">{moves}</span>
+                </div>
+                <span className="stat-caption">Moves</span>
+              </div>
+            </div>
+            
+            <p className="game-over-message">{performanceMessage}</p>
+            
+            <div className="game-over-actions">
+              <button 
+                className="btn play-again-btn"
+                onClick={startNewGame}
+                aria-label="Play again"
+              >
+                <span>🎮</span> Play Again
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
