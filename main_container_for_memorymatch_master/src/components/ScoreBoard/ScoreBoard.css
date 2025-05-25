@@ -3,102 +3,99 @@
   flex-direction: column;
   gap: var(--space-md);
   width: 100%;
-  max-width: 640px;
+  max-width: 700px; /* Slightly wider for more playful elements */
   margin: 0 auto var(--space-xl);
   animation: fadeIn var(--transition-normal), slideUpIn var(--transition-normal);
+  font-family: 'Fredoka One', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif; /* Playful font */
 }
 
 .score-panel {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around; /* Space out items more evenly */
   align-items: center;
-  gap: var(--space-md);
-  background: rgba(30, 30, 30, 0.65);
+  gap: var(--space-lg); /* Increased gap */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(230, 240, 255, 0.5)); /* Lighter, glassy, slightly bluish */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius-xl);
   padding: var(--space-lg) var(--space-xl);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-lg), 0 0 15px rgba(126, 182, 255, 0.2); /* Softer shadow with blue glow */
+  border: 3px solid var(--accent-blue); /* Sky blue border */
   transition: all var(--transition-normal);
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allow for potential pop-out effects */
 }
 
 .score-panel::before {
-  content: '';
+  content: '⭐'; /* Star accent */
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    transparent, 
-    var(--primary-light), 
-    var(--secondary-light),
-    transparent
-  );
-  opacity: 0.8;
+  top: -15px;
+  left: 20px;
+  font-size: 1.8rem;
+  color: var(--secondary); /* Gold star */
+  transform: rotate(-15deg);
+  opacity: 0.9;
 }
 
 .score-panel:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border-medium);
-  background: rgba(30, 30, 30, 0.75);
+  box-shadow: var(--shadow-xl), 0 0 25px rgba(126, 182, 255, 0.4);
+  border-color: var(--primary-light); /* Salmon border on hover */
+  transform: translateY(-3px); /* Slight lift on hover */
 }
 
 .stats-container {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-lg); /* Increased gap */
   flex-wrap: wrap;
+  justify-content: center; /* Center stats if they wrap */
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-sm) var(--space-md);
-  min-width: 90px;
-  border-radius: var(--radius-lg);
-  background: rgba(0, 0, 0, 0.2);
+  padding: var(--space-md) var(--space-lg); /* More padding */
+  min-width: 100px; /* Ensure items have some width */
+  border-radius: var(--radius-lg); /* More rounded */
+  background: linear-gradient(145deg, var(--accent-green), var(--accent-blue)); /* Green to Blue gradient */
   transition: all var(--transition-fast);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 2px solid rgba(255, 255, 255, 0.5); /* White border */
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.1), var(--shadow-sm);
 }
 
 .stat-item:hover {
-  transform: translateY(-3px);
-  background: rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-5px) scale(1.05); /* More pronounced hover */
+  background: linear-gradient(145deg, var(--accent-blue), var(--accent-green)); /* Flip gradient on hover */
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.15), var(--shadow-md);
 }
 
 .stat-label {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-tertiary);
+  font-size: 0.9rem; /* Larger label */
+  font-weight: bold;
+  color: var(--text-on-dark-bg); /* White text for contrast */
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 2px;
+  margin-bottom: var(--space-xs); /* More space below label */
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
 .stat-value {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem; /* Larger value */
+  font-weight: bold; /* Using Fredoka One, so bold is good */
+  color: var(--text-on-dark-bg); /* White text for contrast */
+  font-family: 'Fredoka One', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 /* Score has special styling */
 .stat-item.score-stat {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
-  border-color: rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Tomato to Gold gradient */
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 .stat-item.score-stat .stat-value {
-  background-image: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-size: 1.8rem;
+  color: #fff; /* White, no gradient text for simplicity with new bg */
+  font-size: 2.2rem; /* Even larger for score */
 }
 
 /* Actions section */
@@ -110,49 +107,56 @@
 .restart-button {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-lg);
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  gap: var(--space-sm); /* More gap */
+  padding: var(--space-md) var(--space-xl); /* Larger button */
+  background: linear-gradient(135deg, var(--success), #28a745); /* Bright green gradient */
   color: white;
   border: none;
   border-radius: var(--radius-lg);
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: bold; /* Fredoka one is already bold */
+  font-size: 1.1rem; /* Larger font */
   cursor: pointer;
   transition: all var(--transition-normal);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 5px 0 #1e7e34, var(--shadow-md); /* 3D effect */
   position: relative;
   overflow: hidden;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
 .restart-button::before {
-  content: '';
+  content: '🚀'; /* Rocket icon */
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0));
+  top: 50%;
+  left: -30px; /* Start off-screen */
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  opacity: 0.6;
+  transition: left 0.4s ease-out;
 }
 
+.restart-button:hover::before {
+  left: 15px; /* Fly in on hover */
+}
+
+
 .restart-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg), 0 0 15px rgba(99, 102, 241, 0.5);
-  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #1e7e34, var(--shadow-lg), 0 0 15px var(--success);
+  background: linear-gradient(135deg, #32CD32, #2cb84f); /* Lighter green on hover */
 }
 
 .restart-button:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #1e7e34, var(--shadow-sm);
 }
 
 .restart-icon {
-  font-size: 1.2em;
-  transition: all var(--transition-normal);
+  font-size: 1.5em; /* Larger icon */
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy rotation */
 }
 
 .restart-button:hover .restart-icon {
-  transform: rotate(180deg);
+  transform: rotate(360deg) scale(1.2); /* Spin and grow */
 }
 
 /* Media queries for responsive design */
