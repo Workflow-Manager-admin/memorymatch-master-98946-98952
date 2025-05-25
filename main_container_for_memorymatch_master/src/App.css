@@ -125,116 +125,126 @@
 /* Main content area */
 main {
   flex: 1;
-  padding: 80px 0 var(--space-2xl);
+  padding: 90px 0 var(--space-2xl); /* More padding from top due to fixed navbar */
   position: relative;
   z-index: 10;
 }
 
-/* Button styles */
+/* Button styles - Child Friendly */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.625rem 1.25rem;
-  background: var(--primary);
+  padding: 0.75rem 1.5rem; /* Slightly larger padding */
+  background: linear-gradient(135deg, #f89b29, #ff5f6d); /* Orange to Pink gradient */
   color: white;
   border: none;
-  border-radius: var(--radius-md);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
+  border-radius: var(--radius-lg); /* More rounded */
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif; /* Child-friendly font */
+  font-weight: bold;
+  font-size: 1.1rem;
   line-height: 1.4;
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.2s ease-out; /* Faster transition */
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
 .btn::before {
-  content: '';
+  content: '🌟'; /* Sparkle effect on buttons */
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(255,255,255,0.15), rgba(255,255,255,0));
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 1.5rem;
+  color: white;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+.btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.5;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg), 0 0 10px rgba(99, 102, 241, 0.4);
-  background: var(--primary-light);
+  transform: translateY(-3px) scale(1.03); /* More dynamic hover */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2), 0 3px 6px rgba(0,0,0,0.15), 0 0 15px rgba(255, 95, 109, 0.5);
+  background: linear-gradient(135deg, #faac47, #ff707d); /* Lighter on hover */
 }
 
 .btn:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(0) scale(0.98); /* Slight shrink on active */
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--border-focus);
-  outline-offset: 2px;
+  outline: 3px solid #FFD700; /* Gold focus outline */
+  outline-offset: 3px;
 }
 
 .btn-large {
-  padding: 0.75rem 1.75rem;
-  font-size: 1.125rem;
-  border-radius: var(--radius-lg);
+  padding: 0.85rem 2rem;
+  font-size: 1.25rem;
+  border-radius: var(--radius-xl);
 }
 
 .btn-secondary {
-  background: var(--secondary);
+  background: linear-gradient(135deg, #43cea2, #185a9d); /* Green to Blue gradient */
 }
 
 .btn-secondary:hover {
-  background: var(--secondary-light);
-  box-shadow: var(--shadow-lg), 0 0 10px rgba(236, 72, 153, 0.4);
+  background: linear-gradient(135deg, #5adbb5, #206ac3);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2), 0 3px 6px rgba(0,0,0,0.15), 0 0 15px rgba(67, 206, 162, 0.5);
 }
 
-.btn-outline {
+.btn-outline { /* Not used much but update for consistency */
   background: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
+  border: 3px solid #f89b29; /* Thicker border */
+  color: #f89b29;
 }
 
 .btn-outline:hover {
-  background: var(--primary);
+  background: #f89b29;
   color: white;
 }
 
 .btn-icon {
   margin-right: var(--space-sm);
-  font-size: 1.2em;
+  font-size: 1.3em; /* Larger icons */
 }
 
-/* Card styling */
-.card {
-  background: var(--card-bg);
+/* Card styling (global placeholder, specific in Card.css) */
+.card { /* General card class if used elsewhere */
+  background: rgba(255, 255, 255, 0.8); /* Lighter card bg */
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
+  border: 2px solid rgba(0,0,0,0.1);
   padding: var(--space-lg);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border-medium);
+  box-shadow: var(--shadow-lg), 0 0 10px rgba(0,0,0,0.1);
+  border-color: var(--primary);
 }
 
-/* Glass effect */
+/* Glass effect - update to be more playful if used */
 .glass {
-  background: rgba(30, 30, 30, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.2); /* Lighter glass */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-lg);
 }
 
 /* Typography utility classes */
-.text-gradient {
-  background-image: var(--gradient-primary);
+.text-gradient { /* Updated gradient for child-friendly theme */
+  background-image: linear-gradient(45deg, #f89b29, #ff5f6d, #43cea2);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
