@@ -47,6 +47,7 @@ const GameBoard = ({ cards, onCardClick, numPairs }) => {
         >
           <Card
             id={card.id}
+            animal={card.animal} // Pass the animal object to the Card
             value={card.value}
             isFlipped={card.isFlipped}
             isMatched={card.isMatched}

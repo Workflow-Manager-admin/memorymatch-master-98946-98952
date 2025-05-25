@@ -171,30 +171,34 @@ textarea {
 
 /* Code styling */
 code {
-  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
+  font-family: 'Comic Neue', 'Courier New', monospace; /* More readable mono font */
+  background: rgba(0, 0, 0, 0.05); /* Lighter background for code snippets */
+  color: var(--primary-dark); /* Use a theme color for code text */
+  padding: 0.2em 0.5em;
+  border-radius: var(--radius-sm);
   font-size: 0.9em;
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
-/* Enhanced scrollbars */
+/* Enhanced scrollbars - more playful */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--dark);
+  background: var(--accent-blue); /* Light blue track */
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-dark);
-  border-radius: 5px;
+  background: var(--primary); /* Tomato color thumb */
+  border-radius: 10px;
+  border: 2px solid var(--accent-blue); /* Track color border around thumb */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: var(--primary-dark); /* Darker tomato on hover */
 }
 
 /* Animation keyframes library */
