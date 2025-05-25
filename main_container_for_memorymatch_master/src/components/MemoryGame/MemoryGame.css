@@ -7,6 +7,43 @@
   padding-top: var(--space-lg);
 }
 
+/* Difficulty Selection Styles */
+.difficulty-selection {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  background: rgba(30, 30, 30, 0.65);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+  animation: fadeIn var(--transition-normal), scaleIn var(--transition-normal);
+}
+
+.difficulty-selection h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.difficulty-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.difficulty-btn {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 1rem;
+  min-width: 150px;
+}
+
+.difficulty-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
 .game-header {
   text-align: center;
   margin-bottom: var(--space-xl);
@@ -168,6 +205,7 @@
   display: flex;
   justify-content: center;
   gap: var(--space-md);
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
 }
 
 .play-again-btn {
@@ -190,26 +228,34 @@
   .game-title {
     font-size: 2.5rem;
   }
-  
+
   .game-subtitle {
     font-size: 1rem;
   }
-  
+
   .game-over-title {
     font-size: 2rem;
   }
-  
+
   .game-over-stats {
     gap: var(--space-md);
   }
-  
+
   .stat-circle {
     width: 80px;
     height: 80px;
   }
-  
+
   .stat-number {
     font-size: 1.8rem;
+  }
+  .difficulty-options {
+    gap: var(--space-sm);
+  }
+  .difficulty-btn {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9rem;
+    min-width: 120px;
   }
 }
 
@@ -217,39 +263,50 @@
   .game-header {
     margin-bottom: var(--space-lg);
   }
-  
+
   .game-title {
     font-size: 2rem;
   }
-  
+
   .game-subtitle {
     font-size: 0.9rem;
   }
-  
+
   .game-over-content {
     padding: var(--space-lg);
   }
-  
+
   .game-over-title {
     font-size: 1.8rem;
   }
-  
+
   .stat-circle {
     width: 70px;
     height: 70px;
   }
-  
+
   .stat-number {
     font-size: 1.5rem;
   }
-  
+
   .game-over-message {
     font-size: 1rem;
   }
-  
+
   .play-again-btn {
     padding: var(--space-sm) var(--space-lg);
     font-size: 1rem;
+    width: calc(50% - var(--space-sm)); /* Adjust button width for two buttons */
+  }
+   .difficulty-selection h2 {
+    font-size: 1.6rem;
+  }
+  .difficulty-options {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+  }
+  .difficulty-btn {
+    width: 100%;
+    max-width: 280px; /* Max width for stacked buttons */
   }
 }
 
