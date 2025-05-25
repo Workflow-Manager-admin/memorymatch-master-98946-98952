@@ -98,17 +98,17 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 16px; /* Base font size */
   height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--gradient-dark);
+  font-family: 'Fredoka One', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif; /* Primary playful font */
+  background: var(--gradient-dark); /* Applied globally */
   background-attachment: fixed;
-  color: var(--text-primary);
+  color: var(--text-primary); /* Default text color for the app */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -116,9 +116,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Typography presets */
+/* Typography presets - using playful fonts */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Fredoka One', 'Comic Neue', 'Comic Sans MS', cursive, sans-serif; /* Consistent playful font for headers */
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -146,8 +146,9 @@ p {
 
 /* Accessibility */
 :focus {
-  outline: 3px solid var(--border-focus);
-  outline-offset: 2px;
+  outline: 3px solid var(--border-focus); /* Use primary color for focus */
+  outline-offset: 3px; /* Slightly more offset for visibility */
+  border-radius: var(--radius-sm); /* Rounded focus outline */
 }
 
 :focus:not(:focus-visible) {
@@ -156,7 +157,8 @@ p {
 
 :focus-visible {
   outline: 3px solid var(--border-focus);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 /* Remove blue highlight on mobile tap */
