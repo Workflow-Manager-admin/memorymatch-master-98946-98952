@@ -5,6 +5,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding-top: var(--space-lg);
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif; /* Child-friendly font */
 }
 
 /* Difficulty Selection Styles */
@@ -12,18 +13,19 @@
   text-align: center;
   margin-bottom: var(--space-xl);
   padding: var(--space-lg);
-  background: rgba(30, 30, 30, 0.65);
+  background: linear-gradient(135deg, rgba(126, 182, 255, 0.2), rgba(174, 142, 255, 0.25)); /* Light, playful background */
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(126, 182, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   animation: fadeIn var(--transition-normal), scaleIn var(--transition-normal);
 }
 
 .difficulty-selection h2 {
-  font-size: 1.8rem;
+  font-size: 2.2rem; /* Larger and more playful */
   margin-bottom: var(--space-lg);
-  color: var(--text-primary);
-  font-family: 'Montserrat', sans-serif;
+  color: #FFFAF0; /* FloralWhite, soft and friendly */
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif; /* Child-friendly font */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .difficulty-options {
