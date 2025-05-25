@@ -1,6 +1,6 @@
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns will be set dynamically via inline styles */
   gap: var(--space-md);
   width: 100%;
   max-width: 640px;
