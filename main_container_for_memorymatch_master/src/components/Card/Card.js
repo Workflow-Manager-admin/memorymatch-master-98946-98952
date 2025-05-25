@@ -1,18 +1,20 @@
 import React from 'react';
 import './Card.css';
 
+// PUBLIC_INTERFACE
 /**
  * Card component representing a single card in the memory game
- * 
+ *
  * @param {Object} props - Component props
  * @param {string} props.id - Unique identifier for the card
- * @param {string} props.value - The value/symbol on the card
+ * @param {Object} props.animal - The animal object associated with this card
+ * @param {string} props.value - The animal name (used for accessibility and as fallback)
  * @param {boolean} props.isFlipped - Whether the card is currently flipped
  * @param {boolean} props.isMatched - Whether the card has been matched
  * @param {Function} props.onClick - Click handler function
  * @returns {React.Component} Card component
  */
-const Card = ({ id, value, isFlipped, isMatched, onClick }) => {
+const Card = ({ id, animal, value, isFlipped, isMatched, onClick }) => {
   /**
    * Handle click on the card
    */
