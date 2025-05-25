@@ -1,44 +1,50 @@
 .game-board {
   display: grid;
   /* grid-template-columns will be set dynamically via inline styles */
-  gap: var(--space-md);
+  gap: var(--space-md); /* Keep current gap or adjust based on new card sizes */
   width: 100%;
-  max-width: 640px;
+  max-width: 680px; /* Slightly wider for potentially larger cards */
   margin: 0 auto;
-  aspect-ratio: 1 / 1;
-  padding: var(--space-md);
-  border-radius: var(--radius-xl);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-light);
-  box-shadow: var(--shadow-lg);
+  aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+  padding: var(--space-lg); /* More padding for a softer look */
+  border-radius: var(--radius-xl); /* Keep rounded corners */
+  background: linear-gradient(145deg, rgba(137, 247, 254, 0.3), rgba(102, 166, 255, 0.4)); /* Light blue/aqua transparent gradient */
+  border: 3px solid var(--accent-blue); /* Playful sky blue border */
+  box-shadow: var(--shadow-xl), 0 0 25px rgba(102, 166, 255, 0.3); /* Enhanced shadow with blue glow */
   position: relative;
-  transition: all var(--transition-normal);
-  animation: scaleIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
+  transition: all var(--transition-slow); /* Slower, smoother transitions */
+  animation: scaleIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards; /* Bouncier scaleIn */
+  /* Added a subtle background pattern */
+  background-image: 
+    linear-gradient(145deg, rgba(137, 247, 254, 0.3), rgba(102, 166, 255, 0.4)),
+    url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.07'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414zM41.95 14.536l8.486-8.486 1.414 1.414-8.486 8.486-1.414-1.414z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .game-board:hover {
-  box-shadow: var(--shadow-xl);
-  background: rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-xl), 0 0 35px rgba(102, 166, 255, 0.5);
+  transform: scale(1.01); /* Slight grow on hover */
+  border-color: var(--primary-light);
 }
 
-/* Create glow effect around the board */
+/* Create glow effect around the board - adjust for new theme */
 .game-board::after {
   content: '';
   position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  filter: blur(15px);
-  opacity: 0.1;
+  top: -8px; /* Increase offset for a wider glow */
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-green) 100%); /* Salmon to LightGreen glow */
+  filter: blur(20px); /* More blur for softer glow */
+  opacity: 0.25; /* Slightly more visible glow */
   z-index: -1;
-  border-radius: var(--radius-xl);
-  transition: opacity var(--transition-normal);
+  border-radius: calc(var(--radius-xl) + 5px); /* Ensure glow follows rounded border */
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
 }
 
 .game-board:hover::after {
-  opacity: 0.15;
+  opacity: 0.35;
+  transform: scale(1.02);
 }
 
 /* Grid item layout */
