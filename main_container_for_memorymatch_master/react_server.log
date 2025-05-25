@@ -76,3 +76,17 @@ src/components/MemoryGame/MemoryGame.js
 
 webpack compiled with 1 warning
 Compiling...
+Compiled with warnings.
+
+[eslint] 
+src/components/MemoryGame/MemoryGame.js
+  Line 46:6:  React Hook useEffect has a missing dependency: 'createConfetti'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in [eslint] 
+src/components/MemoryGame/MemoryGame.js
+  Line 46:6:  React Hook useEffect has a missing dependency: 'createConfetti'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+webpack compiled with 1 warning
