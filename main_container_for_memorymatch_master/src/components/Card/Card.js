@@ -23,15 +23,32 @@ const Card = ({ id, value, isFlipped, isMatched, onClick }) => {
     }
   };
 
+  /**
+   * Handle keyboard navigation for accessibility
+   */
+  const handleKeyDown = (e) => {
+    // Activate card on Enter or Space
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
   // Determine card classes based on state
-  const cardClasses = `card ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}`;
+  const cardClasses = `card-container ${isFlipped ? 'flipped' : ''} ${isMatched ? 'matched' : ''}`;
 
   return (
-    <div className={cardClasses} onClick={handleClick}>
+    <div 
+      className={cardClasses} 
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label={`Card ${isFlipped ? 'showing ' + value : 'face down'} ${isMatched ? ', matched' : ''}`}
+      aria-pressed={isFlipped}
+    >
       <div className="card-inner">
-        <div className="card-back">
-          <span>?</span>
-        </div>
+        <div className="card-back"></div>
         <div className="card-front">
           <span className="card-value">{value}</span>
         </div>
