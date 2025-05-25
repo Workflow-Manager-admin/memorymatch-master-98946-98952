@@ -94,6 +94,8 @@ const MemoryGame = () => {
     setScore(0);
     setIsLocked(false);
     setConfetti([]);
+    setIsAnimalModalOpen(false); // Close modal on new game
+    setCurrentAnimalForModal(null);
   };
 
   /**
@@ -101,10 +103,10 @@ const MemoryGame = () => {
    * @param {string} cardId - ID of the clicked card
    */
   const handleCardClick = (cardId) => {
-    if (isLocked || flippedCards.length >= 2 || gamePhase !== 'playing') return;
+    if (isLocked || flippedCards.length >= 2 || gamePhase !== 'playing' || isAnimalModalOpen) return;
 
     const clickedCard = cards.find(card => card.id === cardId);
-    if (clickedCard.isFlipped) return;
+    if (!clickedCard || clickedCard.isFlipped) return;
 
     setCards(prevCards =>
       prevCards.map(card =>
@@ -112,38 +114,52 @@ const MemoryGame = () => {
       )
     );
 
-    setFlippedCards(prevFlipped => [...prevFlipped, clickedCard]);
+    const newFlippedCards = [...flippedCards, clickedCard];
+    setFlippedCards(newFlippedCards);
 
-    if (flippedCards.length === 1) {
+    if (newFlippedCards.length === 2) {
       setMoves(prevMoves => prevMoves + 1);
       setIsLocked(true);
 
-      setTimeout(() => {
-        const firstCard = flippedCards[0];
+      const [firstCard, secondCard] = newFlippedCards;
 
-        if (checkForMatch(firstCard, clickedCard)) {
+      setTimeout(() => {
+        if (checkForMatch(firstCard, secondCard)) {
           setMatches(prevMatches => prevMatches + 1);
           setCards(prevCards =>
             prevCards.map(card =>
-              (card.id === firstCard.id || card.id === cardId)
+              (card.id === firstCard.id || card.id === secondCard.id)
                 ? { ...card, isMatched: true, isFlipped: true }
                 : card
             )
           );
+          // Show animal info modal
+          setCurrentAnimalForModal(firstCard.animal); // or secondCard.animal, they are the same
+          setIsAnimalModalOpen(true);
+          // The modal will handle unLocking the board implicitly by its presence or explicitly on close.
+          // For now, we rely on the user closing the modal.
         } else {
           setCards(prevCards =>
             prevCards.map(card =>
-              (card.id === firstCard.id || card.id === cardId)
+              (card.id === firstCard.id || card.id === secondCard.id)
                 ? { ...card, isFlipped: false }
                 : card
             )
           );
         }
-
         setFlippedCards([]);
-        setIsLocked(false);
+        // Only unlock if modal is not opened, or handle unlock on modal close
+        if (!checkForMatch(firstCard, secondCard)) {
+            setIsLocked(false);
+        }
       }, flipDelay);
     }
+  };
+
+  const handleCloseAnimalModal = () => {
+    setIsAnimalModalOpen(false);
+    setCurrentAnimalForModal(null);
+    setIsLocked(false); // Unlock board after modal is closed
   };
   
   /**
@@ -192,14 +208,14 @@ const MemoryGame = () => {
         )}
         {(gamePhase === 'playing' || gamePhase === 'gameOver') && (
           <p className="game-subtitle">
-            Find matching pairs of cards to test your memory skills. The fewer moves, the higher your score!
+            Match the animal pairs and learn cool facts about them!
           </p>
         )}
       </div>
 
       {gamePhase === 'selection' && (
         <div className="difficulty-selection">
-          <h2>Choose Difficulty</h2>
+          <h2 className="text-gradient">Choose Your Adventure!</h2>
           <div className="difficulty-options">
             {availablePairOptions.map(option => (
               <button
