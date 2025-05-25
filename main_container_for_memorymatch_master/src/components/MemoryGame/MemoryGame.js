@@ -246,12 +246,17 @@ const MemoryGame = () => {
               numPairs={numPairs}
             />
           </div>
+          <AnimalInfoModal 
+            isOpen={isAnimalModalOpen}
+            onClose={handleCloseAnimalModal}
+            animal={currentAnimalForModal}
+          />
         </>
       )}
 
       {gamePhase === 'gameOver' && (
         <div className="game-over-modal" role="dialog" aria-labelledby="game-over-title">
-          <div className="celebration-icon">🏆</div>
+          <div className="celebration-icon">🎉</div> {/* Changed to a more generic celebration */}
           {confetti.map(piece => (
             <div
               key={piece.id}
