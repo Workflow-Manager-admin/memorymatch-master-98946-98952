@@ -12,16 +12,22 @@ import './GameBoard.css';
  */
 const GameBoard = ({ cards, onCardClick }) => {
   return (
-    <div className="game-board">
-      {cards.map(card => (
-        <Card
-          key={card.id}
-          id={card.id}
-          value={card.value}
-          isFlipped={card.isFlipped}
-          isMatched={card.isMatched}
-          onClick={onCardClick}
-        />
+    <div className="game-board" role="grid" aria-label="Memory Match Game Board">
+      {cards.map((card, index) => (
+        <div 
+          key={card.id} 
+          className="board-cell" 
+          style={{ animationDelay: `${index * 0.05}s` }}
+          role="gridcell"
+        >
+          <Card
+            id={card.id}
+            value={card.value}
+            isFlipped={card.isFlipped}
+            isMatched={card.isMatched}
+            onClick={onCardClick}
+          />
+        </div>
       ))}
     </div>
   );
