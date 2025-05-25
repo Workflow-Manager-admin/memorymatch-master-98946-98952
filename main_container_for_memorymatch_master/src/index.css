@@ -1,63 +1,71 @@
-/* Modern Design System for MemoryMatch Master */
+/* Child-Friendly Design System for Animal Memory Match */
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap');
+/* Fredoka One is a good rounded, playful font. Comic Neue as a fallback. */
 
 :root {
-  /* Primary color palette */
-  --primary: #6366f1;              /* Indigo primary */
-  --primary-light: #818cf8;        /* Light indigo */
-  --primary-dark: #4f46e5;         /* Dark indigo */
+  /* Primary color palette - Bright and Cheerful */
+  --primary: #FF6347;             /* Tomato Red */
+  --primary-light: #FFA07A;       /* Light Salmon */
+  --primary-dark: #E5533D;        /* Darker Tomato */
   
-  /* Secondary color palette */
-  --secondary: #ec4899;            /* Pink accent */
-  --secondary-light: #f472b6;      /* Light pink */
-  --secondary-dark: #db2777;       /* Dark pink */
+  /* Secondary color palette - Fun and Engaging */
+  --secondary: #FFD700;           /* Gold */
+  --secondary-light: #FFEEAA;     /* Light Gold */
+  --secondary-dark: #E6C200;      /* Darker Gold */
+
+  /* Accent Colors */
+  --accent-blue: #87CEEB;         /* Sky Blue */
+  --accent-green: #90EE90;        /* Light Green */
+  --accent-purple: #D8BFD8;       /* Thistle Purple */
   
-  /* Neutral colors */
-  --dark: #121212;                 /* Dark background */
-  --dark-lighter: #1E1E1E;         /* Slightly lighter dark */
-  --dark-light: #2A2A2A;           /* Light dark for cards */
-  --gray-dark: #333333;            /* Dark gray */
-  --gray: #6B7280;                 /* Medium gray */
-  --gray-light: #D1D5DB;           /* Light gray */
+  /* Neutral colors - Soft and Light */
+  --dark: #4A4A4A;                /* Dark Gray for text */
+  --dark-lighter: #6B6B6B;        /* Medium Dark Gray */
+  --dark-light: #F5F5F5;          /* Very Light Gray (almost white) for card backgrounds */
+  --gray-dark: #A9A9A9;           /* Dark Gray for borders */
+  --gray: #D3D3D3;                /* Light Gray for subtle elements */
+  --gray-light: #E0E0E0;          /* Lighter Gray */
   
   /* Text colors */
-  --text-primary: #FFFFFF;         /* Primary text on dark */
-  --text-secondary: rgba(255, 255, 255, 0.85); /* Secondary text */
-  --text-tertiary: rgba(255, 255, 255, 0.65);  /* Tertiary text */
-  --text-dark: #0F172A;            /* Dark text on light backgrounds */
+  --text-primary: #333333;        /* Dark gray for readability on light backgrounds */
+  --text-secondary: #555555;      /* Medium gray for less important text */
+  --text-tertiary: #777777;       /* Lighter gray for captions */
+  --text-on-dark-bg: #FFFFFF;     /* White text for dark/colored backgrounds */
   
   /* Utility colors */
-  --success: #22C55E;              /* Success green */
-  --warning: #F59E0B;              /* Warning orange */
-  --info: #0EA5E9;                 /* Info blue */
-  --error: #EF4444;                /* Error red */
+  --success: #32CD32;             /* Lime Green */
+  --warning: #FFA500;             /* Orange */
+  --info: #1E90FF;                /* Dodger Blue */
+  --error: #FF4500;               /* OrangeRed */
   
-  /* Elevation and shadows */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
-  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  /* Elevation and shadows - Softer Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 15px 25px rgba(0, 0, 0, 0.1);
+  --shadow-inner: inset 0 1px 3px rgba(0, 0, 0, 0.05);
   
-  /* Glow effects */
-  --glow-primary: 0 0 15px rgba(99, 102, 241, 0.6);
-  --glow-secondary: 0 0 15px rgba(236, 72, 153, 0.6);
+  /* Glow effects - Playful Glows */
+  --glow-primary: 0 0 12px rgba(255, 99, 71, 0.5);   /* Tomato glow */
+  --glow-secondary: 0 0 12px rgba(255, 215, 0, 0.6); /* Gold glow */
   
   /* Card and surface colors */
-  --card-bg: rgba(18, 18, 18, 0.8);
-  --card-bg-hover: rgba(30, 30, 30, 0.95);
-  --surface-bg: rgba(38, 38, 38, 0.5);
-  --overlay-bg: rgba(12, 12, 12, 0.8);
+  --card-bg: #FFFFFF; /* White cards for clean look */
+  --card-bg-hover: #F8F8F8;
+  --surface-bg: rgba(255, 255, 255, 0.8); /* Light surface with some transparency */
+  --overlay-bg: rgba(0, 0, 0, 0.6); /* Overlay for modals */
   
   /* Border colors */
-  --border-light: rgba(255, 255, 255, 0.1);
-  --border-medium: rgba(255, 255, 255, 0.15);
-  --border-focus: rgba(99, 102, 241, 0.5);
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-medium: rgba(0, 0, 0, 0.15);
+  --border-focus: var(--primary); /* Focus with primary color */
   
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  --gradient-card-back: linear-gradient(145deg, var(--primary-light), var(--primary-dark));
-  --gradient-dark: linear-gradient(135deg, var(--dark) 0%, #1A1A1A 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  /* Gradients - Fun & Bright */
+  --gradient-primary: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+  --gradient-card-back: linear-gradient(145deg, var(--accent-blue), var(--accent-green)); /* SkyBlue to LightGreen for card back */
+  --gradient-dark: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); /* Overall app background, moved from App.css for consistency */
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15));
   
   /* Animations and timing */
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
