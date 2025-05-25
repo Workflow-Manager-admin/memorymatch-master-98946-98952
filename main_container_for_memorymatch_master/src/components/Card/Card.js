@@ -48,7 +48,9 @@ const Card = ({ id, value, isFlipped, isMatched, onClick }) => {
       aria-pressed={isFlipped}
     >
       <div className="card-inner">
-        <div className="card-back"></div>
+        <div className="card-back">
+          <span className="card-back-symbol">?</span>
+        </div>
         <div className="card-front">
           <span className="card-value">{value}</span>
         </div>
