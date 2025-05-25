@@ -13,26 +13,41 @@ import './ScoreBoard.css';
  * @returns {React.Component} ScoreBoard component
  */
 const ScoreBoard = ({ score, moves, matches, totalPairs, onRestart }) => {
+  // Calculate progress percentage
+  const progressPercentage = totalPairs > 0 ? (matches / totalPairs) * 100 : 0;
+  
   return (
-    <div className="score-board">
-      <div className="score-item">
-        <div className="score-label">Score</div>
-        <div className="score-value">{score}</div>
+    <div className="score-board-container">
+      <div className="score-panel">
+        <div className="stats-container">
+          <div className="stat-item score-stat" title="Your current game score">
+            <div className="stat-label">Score</div>
+            <div className="stat-value">{score}</div>
+          </div>
+          
+          <div className="stat-item" title="Number of moves you've made">
+            <div className="stat-label">Moves</div>
+            <div className="stat-value">{moves}</div>
+          </div>
+          
+          <div className="stat-item" title="Pairs matched out of total">
+            <div className="stat-label">Matches</div>
+            <div className="stat-value">{matches}/{totalPairs}</div>
+          </div>
+        </div>
+        
+        <div className="game-actions">
+          <button 
+            className="restart-button"
+            onClick={onRestart}
+            aria-label="Restart Game"
+            title="Restart the game"
+          >
+            <span className="restart-icon">⟳</span>
+            Restart Game
+          </button>
+        </div>
       </div>
-      
-      <div className="score-item">
-        <div className="score-label">Moves</div>
-        <div className="score-value">{moves}</div>
-      </div>
-      
-      <div className="score-item">
-        <div className="score-label">Matches</div>
-        <div className="score-value">{matches}/{totalPairs}</div>
-      </div>
-      
-      <button className="btn restart-btn" onClick={onRestart}>
-        Restart Game
-      </button>
     </div>
   );
 };
