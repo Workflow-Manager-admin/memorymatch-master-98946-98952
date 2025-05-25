@@ -51,10 +51,14 @@ const Card = ({ id, animal, value, isFlipped, isMatched, onClick }) => {
     >
       <div className="card-inner">
         <div className="card-back">
-          <span className="card-back-symbol">?</span>
+          <span className="card-back-symbol">🐾</span> {/* Paw print for animal theme */}
         </div>
         <div className="card-front">
-          <span className="card-value">{value}</span>
+          {animal && animal.image ? (
+            <img src={process.env.PUBLIC_URL + animal.image} alt={animal.name} className="card-animal-image" />
+          ) : (
+            <span className="card-value">{value}</span>
+          )}
         </div>
       </div>
     </div>
