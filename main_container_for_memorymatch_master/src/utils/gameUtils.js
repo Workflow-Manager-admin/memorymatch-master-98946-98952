@@ -1,12 +1,8 @@
+import { getAnimalSet } from './animalData';
+
 /**
  * Game utility functions for Memory Match game
  */
-
-// Emoji set to use as card faces
-const emojiSet = [
-  '🐱', '🐶', '🐼', '🐨', '🦊', '🦁', '🐯', '🦄',
-  '🦋', '🐢', '🐬', '🐙', '🦜', '🦉', '🦝', '🐸'
-];
 
 /**
  * Fisher-Yates shuffle algorithm to randomize array elements
