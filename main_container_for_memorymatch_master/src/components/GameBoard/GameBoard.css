@@ -1,49 +1,99 @@
 .game-board {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-sm);
+  gap: var(--space-md);
   width: 100%;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
   aspect-ratio: 1 / 1;
-  padding: var(--space-xs);
-  border-radius: 12px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-lg);
+  position: relative;
   transition: all var(--transition-normal);
+  animation: scaleIn 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
 }
 
 .game-board:hover {
-  box-shadow: var(--shadow-md);
-  background-color: rgba(255, 255, 255, 0.07);
+  box-shadow: var(--shadow-xl);
+  background: rgba(255, 255, 255, 0.05);
 }
 
+/* Create glow effect around the board */
+.game-board::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  filter: blur(15px);
+  opacity: 0.1;
+  z-index: -1;
+  border-radius: var(--radius-xl);
+  transition: opacity var(--transition-normal);
+}
+
+.game-board:hover::after {
+  opacity: 0.15;
+}
+
+/* Grid item layout */
+.board-cell {
+  aspect-ratio: 1/1;
+  position: relative;
+  animation: fadeIn var(--transition-normal), slideUpIn var(--transition-normal);
+  animation-fill-mode: backwards;
+}
+
+/* Apply sequential animation delays to cards */
+.board-cell:nth-child(1) { animation-delay: 0.05s; }
+.board-cell:nth-child(2) { animation-delay: 0.1s; }
+.board-cell:nth-child(3) { animation-delay: 0.15s; }
+.board-cell:nth-child(4) { animation-delay: 0.2s; }
+.board-cell:nth-child(5) { animation-delay: 0.25s; }
+.board-cell:nth-child(6) { animation-delay: 0.3s; }
+.board-cell:nth-child(7) { animation-delay: 0.35s; }
+.board-cell:nth-child(8) { animation-delay: 0.4s; }
+.board-cell:nth-child(9) { animation-delay: 0.45s; }
+.board-cell:nth-child(10) { animation-delay: 0.5s; }
+.board-cell:nth-child(11) { animation-delay: 0.55s; }
+.board-cell:nth-child(12) { animation-delay: 0.6s; }
+.board-cell:nth-child(13) { animation-delay: 0.65s; }
+.board-cell:nth-child(14) { animation-delay: 0.7s; }
+.board-cell:nth-child(15) { animation-delay: 0.75s; }
+.board-cell:nth-child(16) { animation-delay: 0.8s; }
+
 /* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .game-board {
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    max-width: 560px;
+  }
+}
+
 @media (max-width: 576px) {
   .game-board {
-    gap: 8px;
-    padding: 6px;
-    border-radius: 8px;
+    gap: 10px;
+    padding: var(--space-sm);
+    border-radius: var(--radius-lg);
   }
 }
 
 @media (max-width: 360px) {
   .game-board {
-    gap: 6px;
-    padding: 4px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .game-board {
-    max-width: 550px;
+    gap: 8px;
+    padding: 10px;
   }
 }
 
 @media (min-width: 992px) {
   .game-board {
-    max-width: 600px;
-    gap: var(--space-md);
+    max-width: 680px;
+    gap: var(--space-lg);
   }
 }
