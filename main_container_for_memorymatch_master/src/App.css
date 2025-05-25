@@ -11,64 +11,83 @@
 .app::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60vh;
-  background: linear-gradient(180deg, var(--primary-dark) 0%, transparent 100%);
-  opacity: 0.1;
+  /* Multiple paw prints scattered */
+  /* This is a simplified example; more could be added or SVG background used */
+  content: '🐾 🐾 🐾'; 
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0.1);
+  top: 10%;
+  left: 10%;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  z-index: 0;
+  /* You might need more complex positioning or multiple ::before/::after for a better effect */
+}
+/* A secondary set of paw prints */
+.app::after {
+  content: '🌿🐾'; /* Added a leaf for jungle feel */
+  position: absolute;
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.08);
+  bottom: 15%;
+  right: 15%;
+  transform: rotate(20deg);
   pointer-events: none;
   z-index: 0;
 }
 
+
 /* Navigation bar */
 .navbar {
-  background: rgba(18, 18, 18, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-light);
-  padding: var(--space-md) 0;
+  background: rgba(255, 255, 255, 0.3); /* Lighter, glassy navbar */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Playful border */
+  padding: var(--space-sm) 0; /* Slightly less padding */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
   transition: all var(--transition-normal);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .navbar .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* Center the logo */
 }
 
-/* Logo styling */
+/* Logo styling - Animal Theme */
 .logo {
   display: flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--text-primary);
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif; /* Child-friendly font */
+  font-weight: bold;
+  font-size: 1.8rem; /* Larger logo text */
+  color: #3A8D40; /* Forest Green */
   text-decoration: none;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   position: relative;
   z-index: 1;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
 }
 
 .logo-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem; /* Larger icon */
+  height: 3rem;
   margin-right: var(--space-sm);
-  background: var(--primary);
-  color: white;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  background: linear-gradient(135deg, #FFD700, #FFA500); /* Gold to Orange gradient */
+  color: #fff;
+  border-radius: 50%; /* Circular icon */
+  box-shadow: var(--shadow-md), 0 0 10px #FFA500;
   position: relative;
   overflow: hidden;
+  border: 2px solid white;
 }
 
 .logo-icon::before {
@@ -78,22 +97,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
 }
 
 .logo-icon span {
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: 1.8rem; /* Larger emoji/letter */
+  font-weight: bold;
   position: relative;
   z-index: 1;
+  color: #8B4513; /* SaddleBrown for a natural look */
 }
 
 .logo-text {
   position: relative;
-  background-image: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: #228B22; /* ForestGreen */
 }
 
 /* Content container */
