@@ -168,7 +168,7 @@
 
 /* Media queries for responsive design */
 @media (max-width: 576px) {
-  .card-back::after {
+  .card-back-symbol {
     font-size: 2rem;
   }
   
@@ -178,7 +178,7 @@
 }
 
 @media (max-width: 360px) {
-  .card-back::after {
+  .card-back-symbol {
     font-size: 1.8rem;
   }
   
