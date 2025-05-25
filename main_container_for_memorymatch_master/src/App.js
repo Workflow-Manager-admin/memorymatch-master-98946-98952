@@ -2,15 +2,21 @@ import React from 'react';
 import MemoryGame from './components/MemoryGame/MemoryGame';
 import './App.css';
 
-function App() {
+/**
+ * Main App component for the MemoryMatch Master game
+ * 
+ * @returns {React.Component} App component
+ */
+const App = () => {
   return (
     <div className="app">
       <nav className="navbar">
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-            <div className="logo">
-              <span className="logo-symbol">*</span> MemoryMatch Master
+          <div className="logo">
+            <div className="logo-icon">
+              <span>M</span>
             </div>
+            <span className="logo-text">MemoryMatch Master</span>
           </div>
         </div>
       </nav>
@@ -22,6 +28,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;
