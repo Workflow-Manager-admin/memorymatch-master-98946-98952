@@ -95,6 +95,7 @@
   animation: match-pulse 0.8s ease;
   box-shadow: var(--glow-primary);
   border-color: var(--primary);
+  transform: rotateY(180deg);
 }
 
 .card-container.matched .card-front {
