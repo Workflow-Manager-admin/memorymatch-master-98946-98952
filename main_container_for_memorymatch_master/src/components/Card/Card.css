@@ -19,7 +19,7 @@
 }
 
 .card-inner {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
   transition: transform var(--transition-bounce);
