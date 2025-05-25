@@ -28,6 +28,8 @@ const MemoryGame = () => {
   const [score, setScore] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
   const [confetti, setConfetti] = useState([]);
+  const [isAnimalModalOpen, setIsAnimalModalOpen] = useState(false);
+  const [currentAnimalForModal, setCurrentAnimalForModal] = useState(null);
 
   // Initialize game when numPairs changes and gamePhase is 'playing'
   useEffect(() => {
