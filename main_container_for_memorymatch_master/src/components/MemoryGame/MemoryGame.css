@@ -1,0 +1,60 @@
+.memory-game {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.game-title {
+  text-align: center;
+  color: var(--kavia-orange);
+  font-size: 2.5rem;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(26, 26, 26, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fade-in 0.5s;
+}
+
+.game-over h2 {
+  font-size: 2.5rem;
+  color: var(--kavia-orange);
+  margin-bottom: 16px;
+}
+
+.game-over p {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 24px;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 576px) {
+  .memory-game {
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .game-title {
+    font-size: 2rem;
+  }
+}
