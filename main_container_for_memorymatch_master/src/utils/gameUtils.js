@@ -25,7 +25,6 @@ export const shuffleArray = (array) => {
  */
 export const generateCardData = (pairsCount = 8) => {
   const selectedAnimals = getAnimalSet(pairsCount);
-  
   // Create pairs of cards
   let cards = [];
   selectedAnimals.forEach((animal, index) => {
