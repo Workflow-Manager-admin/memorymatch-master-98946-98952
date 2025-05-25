@@ -91,15 +91,29 @@
 
 .card-front {
   background-color: #f0f8ff; /* AliceBlue, a light, friendly color */
-  color: var(--dark);
+  color: var(--dark-lighter); /* Darker text for contrast */
   transform: rotateY(180deg);
-  border: 2px solid rgba(99, 102, 241, 0.3);
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--primary-light); /* Thicker, more playful border */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
   z-index: 2;
+  display: flex; /* To center the image */
+  justify-content: center;
+  align-items: center;
+  padding: 5px; /* Padding around the image */
 }
 
-.card-value {
-  font-size: 2.5rem;
+.card-animal-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain; /* Ensure the whole animal is visible */
+  border-radius: var(--radius-sm); /* Slightly rounded corners for the image itself */
+  animation: scaleIn 0.35s ease;
+}
+
+.card-value { /* Fallback text if image fails */
+  font-size: 1.5rem; /* Smaller if it's just text */
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
+  color: var(--primary-dark);
   animation: scaleIn 0.35s ease;
 }
 

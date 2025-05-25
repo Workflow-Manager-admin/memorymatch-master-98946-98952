@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import GameBoard from '../GameBoard/GameBoard';
 import ScoreBoard from '../ScoreBoard/ScoreBoard';
+import AnimalInfoModal from '../AnimalInfoModal/AnimalInfoModal'; // Import the modal
 import { generateCardData, checkForMatch, calculateScore } from '../../utils/gameUtils';
+// animalData is not directly used here for generation but good to be aware of its role via gameUtils
 import './MemoryGame.css';
 
 // PUBLIC_INTERFACE
